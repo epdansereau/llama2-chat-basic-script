@@ -4,7 +4,6 @@ import time
 
 AUTH_TOKEN = ''
 
-# Check if a GPU is available, otherwise use CPU
 print(torch.cuda.is_available())
 device = torch.device("cuda")
 
