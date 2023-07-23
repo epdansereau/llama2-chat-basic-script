@@ -12,7 +12,16 @@ def start():
     llama_conversation.conversation.append({'role':'system', 'content': system_prompt})
     llama_conversation.conversation.append({'role':'user', 'content': user_message})
 
-    return jsonify({"status": "ok"}), 200
+    prompt = llama_conversation.generate_prompt(llama_conversation.conversation, llama_conversation.conversation[0]['content'])
+
+    output_text, assistant_message = llama_conversation.generate_response(prompt)
+    llama_conversation.conversation.append({'role':'assistant', 'content': assistant_message})
+
+    return jsonify({
+        "assistant_message": assistant_message,
+        "output_text": output_text,
+        "conversation": llama_conversation.conversation
+    }), 200
 
 @app.route('/message', methods=['POST'])
 def message():
