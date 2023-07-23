@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-import llama_conversation
+import llama_conversation 
 
 app = Flask(__name__)
 
@@ -34,4 +34,4 @@ def message():
     }), 200
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=False, port=5000)
