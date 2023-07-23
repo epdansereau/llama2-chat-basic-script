@@ -18,8 +18,6 @@ response = requests.post(url, headers=headers, data=json.dumps(data))
 print(response.json()['assistant_message'].split('[/INST]')[-1].strip())
 ```
 
-In response, the API will return the assistant's initial response.
-
 ## Adding a Message to the Conversation
 
 To add a message to the conversation, send a `POST` request to the `/message` endpoint. The JSON body of the request should have a single field, `user_message`.
@@ -35,5 +33,3 @@ response = requests.post(url, headers=headers, data=json.dumps(data))
 
 print(response.json()['assistant_message'].split('[/INST]')[-1].strip())
 ```
-
-In response, the API will return the assistant's response to the user's message.
