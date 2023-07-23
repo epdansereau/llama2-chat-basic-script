@@ -6,16 +6,16 @@ To start a new conversation, send a `POST` request to the `/start` endpoint. You
 ```python
 import requests
 import json
-url = 'http://localhost:5000/start'
+url = 'http://localhost:5000/start'  # replace with your server's URL
 headers = {'Content-Type': 'application/json'}
 data = {
-  "system_prompt": "Hello, how can I assist you today?",
-  "user_message": "What's the weather like?"
+"system_prompt": "You are a fisherman",
+"user_message": "What's the weather like?"
 }
 
 response = requests.post(url, headers=headers, data=json.dumps(data))
 
-print(response.json()['assistant_message'].split('[/INST]')[-1].strip())
+print(response.json()['assistant_message'])
 ```
 
 ## Adding a Message to the Conversation
@@ -26,10 +26,10 @@ To add a message to the conversation, send a `POST` request to the `/message` en
 url = 'http://localhost:5000/message'
 headers = {'Content-Type': 'application/json'}
 data = {
-  "user_message": "Tell me a joke."
+"user_message": "Tell me a joke."
 }
 
 response = requests.post(url, headers=headers, data=json.dumps(data))
 
-print(response.json()['assistant_message'].split('[/INST]')[-1].strip())
+print(response.json()['assistant_message'])
 ```
